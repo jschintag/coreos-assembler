@@ -181,8 +181,8 @@ case "$arch" in
                       -n ${ROOTPN}:0:0 -c ${ROOTPN}:root -t ${ROOTPN}:0FC63DAF-8483-4772-8E79-3D69D8477DE4)
         if [[ ${secure_execution} -eq 1 ]]; then
             # shellcheck disable=SC2206
-            sgdisk_args+=(-n ${BOOTVERITYHASHPN}:0:+128M -c ${BOOTVERITYHASHPN}:boothash \
-                          -n ${ROOTVERITYHASHPN}:0:+256M -c ${ROOTVERITYHASHPN}:roothash)
+            sgdisk_args+=(-n ${BOOTVERITYHASHPN}:0:-128M -c ${BOOTVERITYHASHPN}:boothash \
+                          -n ${ROOTVERITYHASHPN}:0:-256M -c ${ROOTVERITYHASHPN}:roothash)
         fi
         # NB: in the bare metal case when targeting ECKD DASD disks, this
         # partition table is not what actually gets written to disk in the end:
